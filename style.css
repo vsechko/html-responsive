@@ -378,4 +378,15 @@ article a.btr {
   position: relative;
   margin-right: 10px;
 
-
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.44, #0872C4),
+	color-stop(0.55, #0766B4)
+);
+background-image: -o-linear-gradient(bottom, #0872C4 44%, #0766B4 55%);
+background-image: -moz-linear-gradient(bottom, #0872C4 44%, #0766B4 55%);
+background-image: -webkit-linear-gradient(bottom, #0872C4 44%, #0766B4 55%);
+background-image: -ms-linear-gradient(bottom, #0872C4 44%, #0766B4 55%);
+background-image: linear-gradient(to bottom, #0872C4 44%, #0766B4 55%);

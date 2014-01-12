@@ -1,0 +1,99 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Title</title>
+ 
+
+  <script src="jquery1.7.2.js"></script>
+  <script>
+  $(document).ready(function() {
+	t_index_script();
+	
+});
+
+function t_index_script() {
+	if (!$('#t_index').length) return;
+	
+	var $targetDiv  = $('#t_index .targetDiv'),
+		$showSingle = $('#t_index .showSingle');
+
+	set_click_on_top_button_menu();
+	
+	
+	function set_click_on_top_button_menu() {
+		$targetDiv.first().show();
+		$showSingle.first().addClass('selected');
+		
+		$showSingle.bind('click._set_active_menu_and_show_content', _set_active_menu_and_show_content);
+		
+		function _set_active_menu_and_show_content(event) {
+			event.preventDefault();
+			var current_div_num=$(this).index() +1;
+			
+			$showSingle.removeClass('selected');
+			$(this).addClass('selected');
+			$targetDiv.hide();
+			$('#t_index > div').eq(current_div_num).show();
+		}
+	}
+
+	
+}
+  
+  </script>
+  <style type="text/css"> 
+#adiv1.selected,
+#adiv2.selected,
+#adiv3.selected { background: none repeat scroll 0 0 transparent; border-bottom: medium none !important; border-right: 1px solid #393939; color: #EFBD27 !important; cursor: default; }
+#adiv4.selected { background: none repeat scroll 0 0 transparent; border-bottom: medium none !important; border-right: none; color: #EFBD27 !important; cursor: default; }
+.buttons { float:left; width:100%; margin-top:-15px; }
+#adiv1,
+#adiv2,
+#adiv3 { background: #ccc; border-bottom: 1px solid #393939; border-right: 1px solid #393939; color: #BBBBBB !important; display: block; float: left; font-size: 14px !important; font-weight: bold !important; height: 31px; outline: 0 none; padding-top: 8px; position: relative; text-align: center; text-decoration: none !important; width: 181px; cursor: pointer; }
+#adiv4 { background: #ccc; border-bottom: 1px solid #393939; border-right: none; display: block; float:left; width:182px; font-size: 14px !important; font-weight: bold !important; color: #BBBBBB !important; text-decoration: none !important; height: 31px; outline: 0 none; padding-top: 8px; position: relative; text-align: center; text-decoration: none; cursor: pointer; }
+.targetDiv { float: left; width: 100%; }
+#div1,
+#div2,
+#div3,
+#div4 { padding: 0 20px; }
+
+.targetDiv 								{ display:none;}
+.targetDiv:nth-child(2) 				{ display:block;}
+.targetcontent							{ display:none;}
+
+</style>
+  
+</head>
+ 
+<body>
+		<div id="t_index">
+			<div class="buttons">
+				<a id="adiv1" class="showSingle selected">TEST1</a> 
+				<a id="adiv2" class="showSingle">TEST2</a> 
+				<a id="adiv3" class="showSingle">TEST3</a>
+				<a id="adiv4" class="showSingle">TEST4</a>
+			</div>
+			<div id="div1" class="targetDiv" style="display: block;">
+			Test1
+			
+			</div>
+			<div id="div2" class="targetDiv" style="display: none;">
+			Test2
+			
+			</div>
+			<div id="div3" class="targetDiv" style="display: none;">
+			Test3
+			
+			</div>
+			<div id="div4" class="targetDiv" style="display: none;">
+			Test4
+			
+			</div>
+		</div>
+</body>
+</html>
+
+
+
